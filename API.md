@@ -10,9 +10,9 @@
 
 ### 登录
 
->基本信息
+> 基本信息
 
-请求URL: /hr/v1/admin/login
+请求URL: /hr/v1/system/login
 
 请求方式: POST
 
@@ -40,11 +40,53 @@
 | message | string    | 非必须   |        | 响应信息 |          |
 | result  | object [] | 非必须   |        | 响应数据 |          |
 
+### 获取用户信息
+
+> 基本信息
+
+请求URL: /hr/v1/system/user/info
+
+请求方式: GET
+
+> 请求参数
+
+请求头:
+
+| 参数名称      | 参数值 | 是否必须 | 示例  | 备注 |
+| ------------- | ------ | -------- | ----- | ---- |
+| Authorization |        | 是       | token |      |
+
+> 请求体:
+
+| 名称     | 类型   | 是否必须 | 默认值 | 备注     | 其他信息 |
+| -------- | ------ | -------- | ------ | -------- | -------- |
+| | | | | | |
+
+> 返回数据
+
+| 名称    | 类型      | 是否必须 | 默认值 | 备注     | 其他信息 |
+| ------- | --------- | -------- | ------ | -------- | -------- |
+| flag    | boolean   | 非必须   |        | 状态     |          |
+| code    | string    | 非必须   |        | 状态码   |          |
+| message | string    | 非必须   |        | 响应信息 |          |
+| result  | object [] | 非必须   |        | 响应数据 |          |
+
+> result
+
+```json
+{
+  "id": "",
+  "username": "",
+  "nickname": "",
+  "avatar": ""
+}
+```
+
 ### 菜单列表
 
 > 基本信息
 
-请求URL: /hr/v1/admin/menu-list
+请求URL: /hr/v1/system/menu-list
 
 请求方式: GET
 
@@ -71,19 +113,23 @@
 | message | string    | 非必须   |        | 响应信息 |          |
 | result  | object [] | 非必须   |        | 响应数据 |          |
 
+> result
+
 ```json
 [
   {
-    'id': 'ID',
-    'label': '标题',
-    'icon': '图标',
-    'parentId': '父ID',
-    'children': [
-      'id': 'ID',
-      'label': '子标题',
-      'icon': '图标',
-      'parentId': '父ID',
-      'children': []
+    "id": "ID",
+    "label": "标题",
+    "icon": "图标",
+    "parentId": "父ID",
+    "children": [
+      {
+        "id": "ID",
+        "label": "子标题",
+        "icon": "图标",
+        "parentId": "父ID",
+        "children": []
+      }
     ]
   }
 ]
