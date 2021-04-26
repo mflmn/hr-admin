@@ -1,0 +1,25 @@
+server:
+  port: 53010
+  tomcat:
+    remote-ip-header: x-forwarded-for
+    protocol-header: x-forwarded-proto
+  use-forward-headers: true
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: system-service
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  messages:
+    encoding: UTF-8
+  main:
+    allow-bean-definition-overriding: true
+    # 关闭banner
+    banner-mode: 'off'
+  profiles:
+    active: dev

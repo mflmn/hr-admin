@@ -1,0 +1,17 @@
+server:
+  port: 56010
+  tomcat:
+    remote-ip-header: x-forwarded-for
+    protocol-header: x-forwarded-proto
+  use-forward-headers: true
+  servlet:
+    context-path: /hr
+
+spring:
+  application:
+    name: web-service
+  main:
+    allow-bean-definition-overriding: true
+    banner-mode: 'off'
+  profiles:
+    active: dev

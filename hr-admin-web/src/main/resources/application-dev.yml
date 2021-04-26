@@ -1,0 +1,23 @@
+# dubbo配置
+dubbo:
+  application:
+    name: web-service
+  registry:
+    address: zookeeper://192.168.158.160:2181
+    protocol: zookeeper
+  scan:
+    base-packages: com.hr.web.controller.v1
+
+# jwt
+jwt:
+  # 秘钥
+  secret: 'yueliminvc@outlook.com'
+  # 过期时间
+  expiration: 86400
+  # 头
+  header: 'Authorization'
+  # 前缀
+  tokenHeader: 'Bearer '
+
+swagger:
+  enable: true

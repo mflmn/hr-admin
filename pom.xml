@@ -11,6 +11,7 @@
     <modules>
         <module>hr-admin-web</module>
         <module>hr-admin-system</module>
+        <module>hr-admin-commons</module>
     </modules>
 
     <parent>
@@ -37,7 +38,7 @@
         <zookeeper.version>3.4.13</zookeeper.version>
         <zookeeer.client.version>0.10</zookeeer.client.version>
         <mybatis.plus.starter.version>3.1.2</mybatis.plus.starter.version>
-        <druid.starter.version>1.1.22</druid.starter.version>
+        <jjwt.version>0.9.0</jjwt.version>
     </properties>
 
     <dependencyManagement>
@@ -116,11 +117,10 @@
                 <version>${mybatis.plus.starter.version}</version>
             </dependency>
 
-            <!-- druid连接池监控 -->
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid.starter.version}</version>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

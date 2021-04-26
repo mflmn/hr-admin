@@ -11,5 +11,31 @@
 
     <artifactId>hr-admin-system-api</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.hr</groupId>
+            <artifactId>hr-admin-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.hr</groupId>
+            <artifactId>hr-admin-common-db</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 
 </project>
