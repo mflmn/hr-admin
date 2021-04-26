@@ -12,7 +12,7 @@
 
 > 基本信息
 
-请求URL: /hr/v1/system/login
+请求URL: /hr/v1/system/user/login
 
 请求方式: POST
 
@@ -86,7 +86,7 @@
 
 > 基本信息
 
-请求URL: /hr/v1/system/menu-list
+请求URL: /hr/v1/system/menu
 
 请求方式: GET
 
