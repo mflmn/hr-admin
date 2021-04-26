@@ -13,7 +13,7 @@ import java.util.Date;
  * @since 1.8
  */
 @Data
-@ApiModel(value="RoleDto", description="")
+@ApiModel(value = "RoleDto", description = "")
 public class RoleDto implements Serializable {
 
     private static final long serialVersionUID = 1L;

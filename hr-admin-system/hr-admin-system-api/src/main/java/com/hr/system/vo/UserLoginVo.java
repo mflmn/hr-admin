@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
  * @since 1.8
  */
 @Data
-@ApiModel(value="UserVO", description="")
+@ApiModel(value = "UserVO", description = "")
 public class UserLoginVo {
     @NotNull(message = "用户名不能为空")
     @ApiModelProperty(value = "用户名")

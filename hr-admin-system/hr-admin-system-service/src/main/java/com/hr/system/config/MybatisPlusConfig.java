@@ -1,6 +1,5 @@
 package com.hr.system.config;
 
-import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize;
@@ -19,17 +18,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan("com.hr.*.mapper")
 @EnableTransactionManagement(proxyTargetClass = true)
 public class MybatisPlusConfig {
-  @Bean
-  public PaginationInterceptor paginationInterceptor() {
-    PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
-    paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
-    return paginationInterceptor;
-  }
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+        paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
+        return paginationInterceptor;
+    }
 
-  @Bean
-  @Profile(value = {"dev", "test"})
-  public PerformanceInterceptor performanceInterceptor() {
-    return new PerformanceInterceptor();
-  }
+    @Bean
+    @Profile(value = {"dev", "test"})
+    public PerformanceInterceptor performanceInterceptor() {
+        return new PerformanceInterceptor();
+    }
 }
 

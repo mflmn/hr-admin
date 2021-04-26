@@ -4,9 +4,7 @@ import com.hr.common.domain.CommonErrorCode;
 import com.hr.common.exception.BusinessException;
 import com.hr.system.dto.UserDto;
 import com.hr.system.service.IUserService;
-import org.apache.catalina.mbeans.UserMBean;
 import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,7 +15,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;

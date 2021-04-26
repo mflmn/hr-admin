@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @since 1.8
  */
 @Data
-@ApiModel(value="ResourceDto", description="")
+@ApiModel(value = "ResourceDto", description = "")
 public class ResourceDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
