@@ -20,7 +20,7 @@ public class RestNotFoundExceptionHandler implements ErrorController {
     @RequestMapping(value = ERROR_PATH)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public CommonResult<CommonErrorCode> handleError() {
-        CommonErrorCode u = CommonErrorCode.NOT_FOUND;
+        CommonErrorCode u = CommonErrorCode.API_NOT_EXIST;
         return new CommonResult<CommonErrorCode>(u.getFlag(), u.getCode(), u.getMessage());
     }
 

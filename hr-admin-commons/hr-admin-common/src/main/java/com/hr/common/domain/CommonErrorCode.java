@@ -10,22 +10,19 @@ public enum CommonErrorCode implements ErrorCode {
      * 枚举的一些状态码以及提示信息
      */
     SUCCESS(true, "00000", "操作成功"),
+    USER_EXISTS(false, "A0111", "用户名已存在"),
     USER_NOT_EXISTS(false, "A0201", "账户不存在"),
     USER_NOT_ACTIVE(false, "A0202", "账户冻结"),
     PASSWORD_ERROR(false, "A0210", "密码错误"),
     UNAUTHORIZED(false, "A0301", "访问未授权"),
-    AUTHORIZATION_EXPIRES(false, "A0311", "授权过期"),
     WITHOUT_PERMISSION(false, "A0312", "无权限使用API"),
-    AUTHORIZATION_ERROR(false, "A0340", "用户签名异常"),
-    FAILED(false, "B0001", "系统执行失败"),
-    VALIDATE_FAILED(false, "B0002", "参数校验失败"),
-    CHILDREN_FAILED(false, "B0003", "存在子节点, 操作失败"),
-    AUDIT_FAILED(false, "B0004", "审核未通过或未审核"),
-    UNKNOWN_ERROR(false, "B0300", "系统资源异常"),
-    NOT_FOUND(false, "B0404", "对象丢失"),
+    VALIDATE_INPUT(false, "A0402", "无效的用户输入"),
+    SYSTEM_EXECUTION_TIMEOUT(false, "B0100", "系统执行超时"),
+    SYSTEM_RESOURCE_ERROR(false, "B0300", "系统资源异常"),
     HTTP_REQUEST_METHOD_NOT_SUPPORTED(false, "B0405", "请求方法不支持"),
     HTTP_MEDIA_TYPE_NOT_SUPPORTED(false, "B0415", "不支持媒体类型"),
-    REMOTE_ERROR(false, "C0001", "第三方调用错误");
+    API_NOT_EXIST(false, "C0113", "接口不存在"),
+    ;
 
     private boolean flag;
     private String code;

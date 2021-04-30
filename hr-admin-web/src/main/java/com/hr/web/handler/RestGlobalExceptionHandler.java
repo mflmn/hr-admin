@@ -29,7 +29,7 @@ public class RestGlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public CommonResult<CommonErrorCode> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        CommonErrorCode u = CommonErrorCode.VALIDATE_FAILED;
+        CommonErrorCode u = CommonErrorCode.VALIDATE_INPUT;
         return new CommonResult<CommonErrorCode>(u.getFlag(), u.getCode(), e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
     }
 
@@ -47,7 +47,7 @@ public class RestGlobalExceptionHandler {
     public CommonResult<CommonErrorCode> handleNotFound(Exception e) {
         LOGGER.info(e.getMessage(), e);
 
-        CommonErrorCode u = CommonErrorCode.NOT_FOUND;
+        CommonErrorCode u = CommonErrorCode.API_NOT_EXIST;
         return new CommonResult<CommonErrorCode>(u.getFlag(), u.getCode(), u.getMessage());
     }
 
@@ -82,7 +82,7 @@ public class RestGlobalExceptionHandler {
             }
         }
 
-        CommonErrorCode u = CommonErrorCode.UNKNOWN_ERROR;
+        CommonErrorCode u = CommonErrorCode.SYSTEM_RESOURCE_ERROR;
         return new CommonResult<CommonErrorCode>(u.getFlag(), u.getCode(), u.getMessage());
     }
 }
