@@ -11,6 +11,7 @@
 
     <artifactId>hr-admin-document</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>hr-admin-document-api</module>
         <module>hr-admin-document-service</module>
