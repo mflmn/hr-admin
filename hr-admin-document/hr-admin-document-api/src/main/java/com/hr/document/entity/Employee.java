@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * <p>
@@ -42,7 +42,7 @@ import java.time.LocalDate;
       /**
      * 出生日期
      */
-      private LocalDate birthday;
+      private Date birthday;
 
       /**
      * 身份证号
@@ -132,7 +132,7 @@ import java.time.LocalDate;
      * 入职日期
      */
       @TableField("beginDate")
-    private LocalDate beginDate;
+    private Date beginDate;
 
       /**
      * 在职状态
@@ -156,25 +156,25 @@ import java.time.LocalDate;
      * 转正日期
      */
       @TableField("conversionTime")
-    private LocalDate conversionTime;
+    private Date conversionTime;
 
       /**
      * 离职日期
      */
       @TableField("notWorkDate")
-    private LocalDate notWorkDate;
+    private Date notWorkDate;
 
       /**
      * 合同起始日期
      */
       @TableField("beginContract")
-    private LocalDate beginContract;
+    private Date beginContract;
 
       /**
      * 合同终止日期
      */
       @TableField("endContract")
-    private LocalDate endContract;
+    private Date endContract;
 
       /**
      * 工龄

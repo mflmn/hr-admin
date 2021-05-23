@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.hr.document.entity.*;
 import com.hr.system.entity.Department;
+import com.hr.system.entity.User;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -16,7 +17,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * @author junjie
@@ -46,7 +47,7 @@ public class EmployeeDto implements Serializable {
     @ApiModelProperty(value = "出生日期")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @Excel(name = "出生日期",format = "yyyy-MM-dd",width = 20)
-    private LocalDate birthday;
+    private Date birthday;
 
     @ApiModelProperty(value = "身份证号")
     @Excel(name = "身份证号",width = 30)
@@ -79,7 +80,7 @@ public class EmployeeDto implements Serializable {
     private String address;
 
     @ApiModelProperty(value = "所属部门")
-    private Integer departmentId;
+    private Long departmentId;
 
     @ApiModelProperty(value = "职称ID")
     private Integer jobLevelId;
@@ -107,7 +108,7 @@ public class EmployeeDto implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @Excel(name = "入职日期",format = "yyyy-MM-dd",width = 20)
-    private LocalDate beginDate;
+    private Date beginDate;
 
     @ApiModelProperty(value = "在职状态")
     @Excel(name = "在职状态")
@@ -124,27 +125,31 @@ public class EmployeeDto implements Serializable {
     @ApiModelProperty(value = "转正日期")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @Excel(name = "转正日期",format = "yyyy-MM-dd",width = 20)
-    private LocalDate conversionTime;
+    private Date conversionTime;
 
     @ApiModelProperty(value = "离职日期")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
-    private LocalDate notWorkDate;
+    private Date notWorkDate;
 
     @ApiModelProperty(value = "合同起始日期")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @Excel(name = "合同起始日期",format = "yyyy-MM-dd",width = 20)
-    private LocalDate beginContract;
+    private Date beginContract;
 
     @ApiModelProperty(value = "合同终止日期")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @Excel(name = "合同终止日期",format = "yyyy-MM-dd",width = 20)
-    private LocalDate endContract;
+    private Date endContract;
 
     @ApiModelProperty(value = "工龄")
+    @Excel(name = "工龄")
     private Integer workAge;
 
     @ApiModelProperty(value = "工资账套ID")
     private Integer salaryId;
+
+    @ApiModelProperty(value = "用户ID")
+    private Long userId;
 
     @ApiModelProperty(value = "民族")
     @TableField(exist = false)
@@ -173,9 +178,12 @@ public class EmployeeDto implements Serializable {
 
     @ApiModelProperty(value = "工资套账")
     @TableField(exist = false)
+    @ExcelEntity(name = "工资套账")
     private Salary salary;
 
-    @ApiModelProperty(value = "用户ID")
-    private Long userId;
+    @ApiModelProperty(value = "用户")
+    @TableField(exist = false)
+    @ExcelEntity(name = "用户")
+    private User user;
 
 }
