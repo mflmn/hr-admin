@@ -18,92 +18,91 @@ import java.time.LocalDateTime;
  * @since 2021-05-21
  */
 @Data
-  @EqualsAndHashCode(callSuper = false)
-    public class Salary implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class Salary implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
-      /**
+    /**
      * id
      */
-        @TableId(value = "id", type = IdType.AUTO)
-      private Integer id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
-      /**
+    /**
      * 基本工资
      */
-      @TableField("basicSalary")
+    @TableField("basicSalary")
     private Integer basicSalary;
 
-      /**
+    /**
      * 奖金
      */
-      private Integer bonus;
+    private Integer bonus;
 
-      /**
+    /**
      * 午餐补助
      */
-      @TableField("lunchSalary")
+    @TableField("lunchSalary")
     private Integer lunchSalary;
 
-      /**
+    /**
      * 交通补助
      */
-      @TableField("trafficSalary")
+    @TableField("trafficSalary")
     private Integer trafficSalary;
 
-      /**
+    /**
      * 应发工资
      */
-      @TableField("allSalary")
+    @TableField("allSalary")
     private Integer allSalary;
 
-      /**
+    /**
      * 养老金基数
      */
-      @TableField("pensionBase")
+    @TableField("pensionBase")
     private Integer pensionBase;
 
-      /**
+    /**
      * 养老金比率
      */
-      @TableField("pensionPer")
+    @TableField("pensionPer")
     private Float pensionPer;
 
-      /**
+    /**
      * 启用时间
      */
-      @TableField("createDate")
+    @TableField("createDate")
     private LocalDateTime createDate;
 
-      /**
+    /**
      * 医疗基数
      */
-      @TableField("medicalBase")
+    @TableField("medicalBase")
     private Integer medicalBase;
 
-      /**
+    /**
      * 医疗保险比率
      */
-      @TableField("medicalPer")
+    @TableField("medicalPer")
     private Float medicalPer;
 
-      /**
+    /**
      * 公积金基数
      */
-      @TableField("accumulationFundBase")
+    @TableField("accumulationFundBase")
     private Integer accumulationFundBase;
 
-      /**
+    /**
      * 公积金比率
      */
-      @TableField("accumulationFundPer")
+    @TableField("accumulationFundPer")
     private Float accumulationFundPer;
 
-      /**
+    /**
      * 名称
      */
-      private String name;
-
+    private String name;
 
 }

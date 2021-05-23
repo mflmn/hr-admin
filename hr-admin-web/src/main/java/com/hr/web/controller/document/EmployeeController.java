@@ -37,7 +37,7 @@ public class EmployeeController {
     public CommonPage<EmployeeDto> getEmployee(@RequestParam(defaultValue = "1") Integer currentPage,
                                                @RequestParam(defaultValue = "10") Integer size,
                                                EmployeeDto employee,
-                                               Date beginDateScope){
+                                               Date[] beginDateScope){
         return employeeService.getEmployeeByPage(currentPage, size, employee, beginDateScope);
     }
 

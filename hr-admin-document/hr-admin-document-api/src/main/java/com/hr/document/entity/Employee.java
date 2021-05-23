@@ -18,181 +18,180 @@ import java.util.Date;
  * @since 2021-05-21
  */
 @Data
-  @EqualsAndHashCode(callSuper = false)
-    public class Employee implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class Employee implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
-      /**
+    /**
      * 员工编号
      */
-        @TableId(value = "id", type = IdType.AUTO)
-      private Integer id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
-      /**
+    /**
      * 员工姓名
      */
-      private String name;
+    private String name;
 
-      /**
+    /**
      * 性别
      */
-      private String gender;
+    private String gender;
 
-      /**
+    /**
      * 出生日期
      */
-      private Date birthday;
+    private Date birthday;
 
-      /**
+    /**
      * 身份证号
      */
-      @TableField("idCard")
+    @TableField("idCard")
     private String idCard;
 
-      /**
+    /**
      * 婚姻状况
      */
-      private String wedlock;
+    private String wedlock;
 
-      /**
+    /**
      * 民族
      */
-      @TableField("nationId")
+    @TableField("nationId")
     private Integer nationId;
 
-      /**
+    /**
      * 籍贯
      */
-      @TableField("nativePlace")
+    @TableField("nativePlace")
     private String nativePlace;
 
-      /**
+    /**
      * 政治面貌
      */
-      @TableField("politicId")
+    @TableField("politicId")
     private Integer politicId;
 
-      /**
+    /**
      * 邮箱
      */
-      private String email;
+    private String email;
 
-      /**
+    /**
      * 电话号码
      */
-      private String phone;
+    private String phone;
 
-      /**
+    /**
      * 联系地址
      */
-      private String address;
+    private String address;
 
-      /**
+    /**
      * 所属部门
      */
-      @TableField("departmentId")
+    @TableField("departmentId")
     private Long departmentId;
 
-      /**
+    /**
      * 职称ID
      */
-      @TableField("jobLevelId")
+    @TableField("jobLevelId")
     private Integer jobLevelId;
 
-      /**
+    /**
      * 职位ID
      */
-      @TableField("posId")
+    @TableField("posId")
     private Integer posId;
 
-      /**
+    /**
      * 聘用形式
      */
-      @TableField("engageForm")
+    @TableField("engageForm")
     private String engageForm;
 
-      /**
+    /**
      * 最高学历
      */
-      @TableField("tiptopDegree")
+    @TableField("tiptopDegree")
     private String tiptopDegree;
 
-      /**
+    /**
      * 所属专业
      */
-      private String specialty;
+    private String specialty;
 
-      /**
+    /**
      * 毕业院校
      */
-      private String school;
+    private String school;
 
-      /**
+    /**
      * 入职日期
      */
-      @TableField("beginDate")
+    @TableField("beginDate")
     private Date beginDate;
 
-      /**
+    /**
      * 在职状态
      */
-      @TableField("workState")
+    @TableField("workState")
     private String workState;
 
-      /**
+    /**
      * 工号
      */
-      @TableField("workID")
+    @TableField("workID")
     private String workID;
 
-      /**
+    /**
      * 合同期限
      */
-      @TableField("contractTerm")
+    @TableField("contractTerm")
     private Double contractTerm;
 
-      /**
+    /**
      * 转正日期
      */
-      @TableField("conversionTime")
+    @TableField("conversionTime")
     private Date conversionTime;
 
-      /**
+    /**
      * 离职日期
      */
-      @TableField("notWorkDate")
+    @TableField("notWorkDate")
     private Date notWorkDate;
 
-      /**
+    /**
      * 合同起始日期
      */
-      @TableField("beginContract")
+    @TableField("beginContract")
     private Date beginContract;
 
-      /**
+    /**
      * 合同终止日期
      */
-      @TableField("endContract")
+    @TableField("endContract")
     private Date endContract;
 
-      /**
+    /**
      * 工龄
      */
-      @TableField("workAge")
+    @TableField("workAge")
     private Integer workAge;
 
-      /**
+    /**
      * 工资账套ID
      */
-      @TableField("salaryId")
+    @TableField("salaryId")
     private Integer salaryId;
 
-      /**
+    /**
      * 用户ID
      */
-      @TableField("userId")
+    @TableField("userId")
     private Long userId;
-
 
 }

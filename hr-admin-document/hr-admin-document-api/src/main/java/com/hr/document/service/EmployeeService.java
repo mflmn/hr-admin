@@ -26,7 +26,7 @@ public interface EmployeeService extends IService<EmployeeDto> {
      * @param beginDateScope
      * @return
      */
-    CommonPage<EmployeeDto> getEmployeeByPage(Integer currentPage, Integer size, EmployeeDto employee, Date beginDateScope);
+    CommonPage<EmployeeDto> getEmployeeByPage(Integer currentPage, Integer size, EmployeeDto employee, Date[] beginDateScope);
 
     /**
      * 通过员工id获取员工信息

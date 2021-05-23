@@ -28,7 +28,7 @@ public interface EmployeeMapper extends BaseMapper<EmployeeDto> {
      * @param beginDateScope
      * @return
      */
-    IPage<EmployeeDto> getEmployeeByPage(Page<EmployeeDto> page, EmployeeDto employee, Date beginDateScope);
+    IPage<EmployeeDto> getEmployeeByPage(Page<EmployeeDto> page, EmployeeDto employee, Date[] beginDateScope);
 
     /**
      * 通过员工id获取员工信息

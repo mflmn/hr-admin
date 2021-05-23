@@ -16,21 +16,20 @@ import java.io.Serializable;
  * @since 2021-05-21
  */
 @Data
-  @EqualsAndHashCode(callSuper = false)
-    public class Nation implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class Nation implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
-      /**
+    /**
      * id
      */
-        @TableId(value = "id", type = IdType.AUTO)
-      private Integer id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
-      /**
+    /**
      * 民族
      */
-      private String name;
-
+    private String name;
 
 }
