@@ -8,7 +8,6 @@ import com.hr.common.domain.CommonPage;
 import com.hr.common.domain.CommonResult;
 import com.hr.common.exception.BusinessException;
 import com.hr.document.dto.EmployeeDto;
-import com.hr.document.entity.Employee;
 import com.hr.document.service.EmployeeService;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
