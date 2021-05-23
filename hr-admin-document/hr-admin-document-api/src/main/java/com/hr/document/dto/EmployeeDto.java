@@ -5,7 +5,6 @@ import cn.afterturn.easypoi.excel.annotation.ExcelEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.hr.document.entity.*;
 import com.hr.system.entity.Department;
@@ -26,7 +25,6 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("t_employee")
 @ApiModel(value="Employee对象", description="Employee对象")
 public class EmployeeDto implements Serializable {
 
@@ -183,7 +181,6 @@ public class EmployeeDto implements Serializable {
 
     @ApiModelProperty(value = "用户")
     @TableField(exist = false)
-    @ExcelEntity(name = "用户")
     private User user;
 
 }
