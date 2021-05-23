@@ -3,10 +3,10 @@ package com.hr.document.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hr.document.entity.Employee;
+import com.hr.document.dto.EmployeeDto;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * <p>
@@ -17,7 +17,7 @@ import java.time.LocalDate;
  * @since 2021-05-21
  */
 @Repository
-public interface EmployeeMapper extends BaseMapper<Employee> {
+public interface EmployeeMapper extends BaseMapper<EmployeeDto> {
 
     /**
      * 获取所有员工（分页）
@@ -26,5 +26,5 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
      * @param beginDateScope
      * @return
      */
-    IPage<Employee> getEmployeeByPage(Page<Employee> page, Employee employee, LocalDate beginDateScope);
+    IPage<EmployeeDto> getEmployeeByPage(Page<EmployeeDto> page, EmployeeDto employee, Date beginDateScope);
 }

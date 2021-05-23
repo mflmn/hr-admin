@@ -35,7 +35,7 @@
         <result column="userId" property="userId" />
     </resultMap>
 
-    <resultMap id="EmployeeInfo" type="com.hr.document.entity.Employee" extends="BaseResultMap">
+    <resultMap id="EmployeeInfo" type="com.hr.document.dto.EmployeeDto" extends="BaseResultMap">
         <association property="nation" javaType="com.hr.document.entity.Nation">
             <id column="nid" property="id" />
             <result column="nname" property="name" />
