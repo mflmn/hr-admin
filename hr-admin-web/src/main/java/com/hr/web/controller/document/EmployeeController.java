@@ -9,6 +9,7 @@ import com.hr.common.domain.CommonResult;
 import com.hr.common.exception.BusinessException;
 import com.hr.document.dto.EmployeeDto;
 import com.hr.document.service.EmployeeService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -93,4 +94,45 @@ public class EmployeeController {
 
         }
     }
+
+
+    @ApiOperation("通过ID删除员工数据")
+    @DeleteMapping("/delete/{id}")
+    public CommonResult<Integer> deleteEmployeeById(@PathVariable(value = "id") Integer id){
+
+        Integer result = employeeService.deleteEmployeeById(id);
+        if (result==0) {
+            throw new BusinessException(CommonErrorCode.USER_NOT_EXISTS);
+        }
+
+        return CommonResult.success(result) ;
+    }
+
+
+    @ApiOperation("增加员工数据")
+    @PostMapping("/insertEmployee")
+    public CommonResult<Integer>  insertEmployee(@RequestBody EmployeeDto employeeDto){
+
+        Integer result = employeeService.insertEmployee(employeeDto);
+        if (result == 0) {
+            throw new BusinessException(CommonErrorCode.USER_NOT_EXISTS);//抛出异常
+        }
+        return  CommonResult.success(result);
+    }
+
+
+
+
+    @ApiOperation("通过ID更新员工数据")
+    @PutMapping("/update/{id}")
+    public CommonResult<Integer> updateEmployeeById(@PathVariable(value = "id") Integer id ,@RequestBody EmployeeDto employeeDto){
+
+        Integer result = employeeService.updateEmployeeById(id,employeeDto);
+        if (result == 0) {
+            throw new BusinessException(CommonErrorCode.USER_NOT_EXISTS);//抛出异常
+        }
+        return  CommonResult.success(result);
+    }
+
+
 }
