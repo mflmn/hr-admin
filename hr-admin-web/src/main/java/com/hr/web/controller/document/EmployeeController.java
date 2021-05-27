@@ -99,12 +99,13 @@ public class EmployeeController {
     @ApiOperation("通过ID删除员工数据")
     @DeleteMapping("/delete/{id}")
     public CommonResult<Integer> deleteEmployeeById(@PathVariable(value = "id") Integer id){
-
-        Integer result = employeeService.deleteEmployeeById(id);
-        if (result==0) {
-            throw new BusinessException(CommonErrorCode.USER_NOT_EXISTS);
-        }
-
+        Integer result=0;
+        if (id > 0) {
+            result= employeeService.deleteEmployeeById(id);
+            if (result==0) {
+                throw new BusinessException(CommonErrorCode.USER_NOT_EXISTS);
+            }
+        }else  throw new BusinessException(CommonErrorCode.VALIDATE_INPUT);
         return CommonResult.success(result) ;
     }
 
@@ -127,10 +128,14 @@ public class EmployeeController {
     @PutMapping("/update/{id}")
     public CommonResult<Integer> updateEmployeeById(@PathVariable(value = "id") Integer id ,@RequestBody EmployeeDto employeeDto){
 
-        Integer result = employeeService.updateEmployeeById(id,employeeDto);
+        Integer result=0;
+        if (id > 0) {
+        result = employeeService.updateEmployeeById(id,employeeDto);
         if (result == 0) {
             throw new BusinessException(CommonErrorCode.USER_NOT_EXISTS);//抛出异常
         }
+        }else  throw new BusinessException(CommonErrorCode.VALIDATE_INPUT);
+
         return  CommonResult.success(result);
     }
 
