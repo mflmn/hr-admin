@@ -9,7 +9,6 @@ import com.hr.common.domain.CommonResult;
 import com.hr.common.exception.BusinessException;
 import com.hr.document.dto.EmployeeDto;
 import com.hr.document.service.EmployeeService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -19,7 +18,6 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,8 +35,17 @@ public class EmployeeController {
     @GetMapping("/")
     public CommonPage<EmployeeDto> getEmployee(@RequestParam(defaultValue = "1") Integer currentPage,
                                                @RequestParam(defaultValue = "10") Integer size,
-                                               EmployeeDto employee,
-                                               Date[] beginDateScope){
+                                               @RequestBody EmployeeDto employee,
+                                               String[] beginDateScope){
+        if (employee != null){
+            System.out.println("员工："+employee);
+        }
+
+        if (null != beginDateScope){
+            System.out.println("起始时间："+beginDateScope[0]);
+            System.out.println("截至时间："+beginDateScope[1]);
+        }
+
         return employeeService.getEmployeeByPage(currentPage, size, employee, beginDateScope);
     }
 
@@ -56,7 +63,7 @@ public class EmployeeController {
     @GetMapping("/getEmployeeByName")
     public CommonPage<EmployeeDto> getEmployeeByName(@RequestParam(defaultValue = "1") Integer currentPage,
                                                      @RequestParam(defaultValue = "10") Integer size,
-                                                     @RequestBody String name) {
+                                                     String name) {
         System.out.println(name);
 
         if (!"".equals(name)){
@@ -91,7 +98,6 @@ public class EmployeeController {
                     e.printStackTrace();
                 }
             }
-
         }
     }
 
