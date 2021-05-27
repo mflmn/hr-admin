@@ -5,6 +5,7 @@ import cn.afterturn.easypoi.excel.annotation.ExcelEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.hr.document.entity.*;
 import com.hr.system.entity.Department;
@@ -25,6 +26,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@TableName(value = "employee")
 @ApiModel(value="Employee对象", description="Employee对象")
 public class EmployeeDto implements Serializable {
 
@@ -49,6 +51,7 @@ public class EmployeeDto implements Serializable {
 
     @ApiModelProperty(value = "身份证号")
     @Excel(name = "身份证号",width = 30)
+    @TableField(value = "idCard")
     private String idCard;
 
     @ApiModelProperty(value = "婚姻状况")
@@ -56,13 +59,16 @@ public class EmployeeDto implements Serializable {
     private String wedlock;
 
     @ApiModelProperty(value = "民族")
+    @TableField(value = "nationId")
     private Integer nationId;
 
     @ApiModelProperty(value = "籍贯")
     @Excel(name = "籍贯")
+    @TableField(value = "nativePlace")
     private String nativePlace;
 
     @ApiModelProperty(value = "政治面貌")
+    @TableField(value = "politicId")
     private Integer politicId;
 
     @ApiModelProperty(value = "邮箱")
@@ -78,20 +84,25 @@ public class EmployeeDto implements Serializable {
     private String address;
 
     @ApiModelProperty(value = "所属部门")
+    @TableField(value = "departmentId")
     private Long departmentId;
 
     @ApiModelProperty(value = "职称ID")
+    @TableField(value = "jobLevelId")
     private Integer jobLevelId;
 
     @ApiModelProperty(value = "职位ID")
+    @TableField(value = "posId")
     private Integer posId;
 
     @ApiModelProperty(value = "聘用形式")
     @Excel(name = "聘用形式")
-    private String engageForm;
+    @TableField(value = "engageForm")
+    private String Form;
 
     @ApiModelProperty(value = "最高学历")
     @Excel(name = "最高学历")
+    @TableField(value = "tiptopDegree")
     private String tiptopDegree;
 
     @ApiModelProperty(value = "所属专业")
@@ -106,47 +117,58 @@ public class EmployeeDto implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @Excel(name = "入职日期",format = "yyyy-MM-dd",width = 20)
+    @TableField(value = "beginDate")
     private Date beginDate;
 
     @ApiModelProperty(value = "在职状态")
     @Excel(name = "在职状态")
+    @TableField("workState")
     private String workState;
 
     @ApiModelProperty(value = "工号")
     @Excel(name = "工号")
+    @TableField(value = "workID")
     private String workID;
 
     @ApiModelProperty(value = "合同期限")
     @Excel(name = "合同期限",suffix = "年")
+    @TableField(value = "contractTerm")
     private Double contractTerm;
 
     @ApiModelProperty(value = "转正日期")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @Excel(name = "转正日期",format = "yyyy-MM-dd",width = 20)
+    @TableField(value = "conversionTime")
     private Date conversionTime;
 
     @ApiModelProperty(value = "离职日期")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    @TableField(value = "notWorkDate")
     private Date notWorkDate;
 
     @ApiModelProperty(value = "合同起始日期")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @Excel(name = "合同起始日期",format = "yyyy-MM-dd",width = 20)
+    @TableField(value = "beginContract")
     private Date beginContract;
 
     @ApiModelProperty(value = "合同终止日期")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     @Excel(name = "合同终止日期",format = "yyyy-MM-dd",width = 20)
+    @TableField(value = "endContract")
     private Date endContract;
 
     @ApiModelProperty(value = "工龄")
     @Excel(name = "工龄")
+    @TableField(value = "workAge")
     private Integer workAge;
 
     @ApiModelProperty(value = "工资账套ID")
+    @TableField(value = "salaryId")
     private Integer salaryId;
 
     @ApiModelProperty(value = "用户ID")
+    @TableField(value = "userId")
     private Long userId;
 
     @ApiModelProperty(value = "民族")

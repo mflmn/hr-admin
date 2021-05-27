@@ -47,4 +47,28 @@ public interface EmployeeService extends IService<EmployeeDto> {
      * @return
      */
     List<EmployeeDto> getEmployee();
+
+    /**
+     * 新增员工
+     * @param employeeDto
+     * @return
+     */
+    Integer insertEmployee(EmployeeDto employeeDto);
+
+
+    /**
+     * 通过id 删除员工表
+     * @param id
+     * @return
+     */
+    Integer deleteEmployeeById(Integer id);
+
+
+    /**
+     * 通过id 更新员工表
+     * @param employeeDto
+     * @return
+     */
+    Integer updateEmployeeById(Integer id,EmployeeDto employeeDto);
+
 }
