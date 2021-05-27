@@ -1,4 +1,4 @@
-package com.hr.web.controller.document;
+package com.hr.web.controller.v1;
 
 import cn.afterturn.easypoi.excel.ExcelExportUtil;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
@@ -9,6 +9,7 @@ import com.hr.common.domain.CommonResult;
 import com.hr.common.exception.BusinessException;
 import com.hr.document.dto.EmployeeDto;
 import com.hr.document.service.EmployeeService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -25,47 +26,36 @@ import java.util.List;
  * @version 1.0.0
  */
 @RestController
-@RequestMapping("/document/employee")
-public class EmployeeController {
+@Api(value = "员工操作",tags = {"document"})
+@RequestMapping("/v1/document/employee")
+public class DocumentEmployeeController {
 
     @Reference(interfaceClass = EmployeeService.class)
     private EmployeeService employeeService;
 
     @ApiOperation(value = "获取所有员工(分页)")
-    @GetMapping("/")
+    @GetMapping("/getPages")
     public CommonPage<EmployeeDto> getEmployee(@RequestParam(defaultValue = "1") Integer currentPage,
                                                @RequestParam(defaultValue = "10") Integer size,
-                                               @RequestBody EmployeeDto employee,
+                                               EmployeeDto employee,
                                                String[] beginDateScope){
-        if (employee != null){
-            System.out.println("员工："+employee);
-        }
-
-        if (null != beginDateScope){
-            System.out.println("起始时间："+beginDateScope[0]);
-            System.out.println("截至时间："+beginDateScope[1]);
-        }
-
         return employeeService.getEmployeeByPage(currentPage, size, employee, beginDateScope);
     }
 
     @ApiOperation(value = "通过员工id获取员工信息")
-    @GetMapping("/{id}")
+    @GetMapping("/getEmployeeById/{id}")
     public CommonResult<EmployeeDto> getEmployeeById(@PathVariable("id") Integer id){
         //id为空判断
         if (id > 0){
             return employeeService.getEmployeeById(id);
         }else throw new BusinessException(CommonErrorCode.USER_NOT_EXISTS);//抛出异常
-
     }
 
     @ApiOperation(value = "员工名称模糊查询")
-    @GetMapping("/getEmployeeByName")
+    @GetMapping("/getEmployeeByName/{name}")
     public CommonPage<EmployeeDto> getEmployeeByName(@RequestParam(defaultValue = "1") Integer currentPage,
                                                      @RequestParam(defaultValue = "10") Integer size,
-                                                     String name) {
-        System.out.println(name);
-
+                                                     @PathVariable("name") String name) {
         if (!"".equals(name)){
             return employeeService.getEmployeeByName(currentPage,size,name);
         }else throw new BusinessException(CommonErrorCode.USER_NOT_EXISTS);//抛出异常
@@ -87,7 +77,6 @@ public class EmployeeController {
                     "员工表.xls","UTF-8"));
             out = response.getOutputStream();
             workbook.write(out);
-
         } catch (IOException e) {
             e.printStackTrace();
         }finally {
@@ -100,7 +89,6 @@ public class EmployeeController {
             }
         }
     }
-
 
     @ApiOperation("通过ID删除员工数据")
     @DeleteMapping("/delete/{id}")
@@ -115,7 +103,6 @@ public class EmployeeController {
         return CommonResult.success(result) ;
     }
 
-
     @ApiOperation("增加员工数据")
     @PostMapping("/insertEmployee")
     public CommonResult<Integer>  insertEmployee(@RequestBody EmployeeDto employeeDto){
@@ -126,9 +113,6 @@ public class EmployeeController {
         }
         return  CommonResult.success(result);
     }
-
-
-
 
     @ApiOperation("通过ID更新员工数据")
     @PutMapping("/update/{id}")

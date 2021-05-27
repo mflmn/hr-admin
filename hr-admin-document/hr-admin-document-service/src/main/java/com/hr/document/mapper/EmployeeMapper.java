@@ -7,7 +7,6 @@ import com.hr.document.dto.EmployeeDto;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,7 +27,7 @@ public interface EmployeeMapper extends BaseMapper<EmployeeDto> {
      * @param beginDateScope
      * @return
      */
-    IPage<EmployeeDto> getEmployeeByPage(Page<EmployeeDto> page, EmployeeDto employee, Date[] beginDateScope);
+    IPage<EmployeeDto> getEmployeeByPage(Page<EmployeeDto> page, @Param("employee") EmployeeDto employee, @Param("beginDateScope") String[] beginDateScope);
 
     /**
      * 通过员工id获取员工信息

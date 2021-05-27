@@ -5,7 +5,6 @@ import com.hr.common.domain.CommonPage;
 import com.hr.common.domain.CommonResult;
 import com.hr.document.dto.EmployeeDto;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,7 +25,7 @@ public interface EmployeeService extends IService<EmployeeDto> {
      * @param beginDateScope
      * @return
      */
-    CommonPage<EmployeeDto> getEmployeeByPage(Integer currentPage, Integer size, EmployeeDto employee, Date[] beginDateScope);
+    CommonPage<EmployeeDto> getEmployeeByPage(Integer currentPage, Integer size, EmployeeDto employee, String[] beginDateScope);
 
     /**
      * 通过员工id获取员工信息

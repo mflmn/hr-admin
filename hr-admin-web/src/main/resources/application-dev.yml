@@ -3,7 +3,7 @@ dubbo:
   application:
     name: web-service
   registry:
-    address: zookeeper://192.168.158.160:2181
+    address: zookeeper://192.168.127.129:2181
     protocol: zookeeper
   scan:
     base-packages: com.hr.web.controller.v1

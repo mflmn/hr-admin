@@ -98,7 +98,7 @@ public class EmployeeDto implements Serializable {
     @ApiModelProperty(value = "聘用形式")
     @Excel(name = "聘用形式")
     @TableField(value = "engageForm")
-    private String Form;
+    private String engageForm;
 
     @ApiModelProperty(value = "最高学历")
     @Excel(name = "最高学历")
