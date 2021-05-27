@@ -64,6 +64,7 @@ public class EmployeeDto implements Serializable {
 
     @ApiModelProperty(value = "籍贯")
     @Excel(name = "籍贯")
+    @TableField(value = "nativePlace")
     private String nativePlace;
 
     @ApiModelProperty(value = "政治面貌")
@@ -91,11 +92,13 @@ public class EmployeeDto implements Serializable {
     private Integer jobLevelId;
 
     @ApiModelProperty(value = "职位ID")
+    @TableField(value = "posId")
     private Integer posId;
 
     @ApiModelProperty(value = "聘用形式")
     @Excel(name = "聘用形式")
-    private String engageForm;
+    @TableField(value = "engageForm")
+    private String Form;
 
     @ApiModelProperty(value = "最高学历")
     @Excel(name = "最高学历")
@@ -157,6 +160,7 @@ public class EmployeeDto implements Serializable {
 
     @ApiModelProperty(value = "工龄")
     @Excel(name = "工龄")
+    @TableField(value = "workAge")
     private Integer workAge;
 
     @ApiModelProperty(value = "工资账套ID")
