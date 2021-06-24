@@ -8,7 +8,8 @@ import com.hr.common.domain.CommonPage;
 import com.hr.common.domain.CommonResult;
 import com.hr.common.exception.BusinessException;
 import com.hr.document.dto.EmployeeDto;
-import com.hr.document.service.EmployeeService;
+import com.hr.document.entity.*;
+import com.hr.document.service.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
@@ -19,6 +20,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,19 +28,30 @@ import java.util.List;
  * @version 1.0.0
  */
 @RestController
+@CrossOrigin
 @Api(value = "员工操作",tags = {"document"})
 @RequestMapping("/v1/document/employee")
 public class DocumentEmployeeController {
 
     @Reference(interfaceClass = EmployeeService.class)
     private EmployeeService employeeService;
+    @Reference(interfaceClass = NationService.class)
+    private NationService nationService;
+    @Reference(interfaceClass = PoliticsStatusService.class)
+    private PoliticsStatusService politicsStatusService;
+    @Reference(interfaceClass = JoblevelService.class)
+    private JoblevelService joblevelService;
+    @Reference(interfaceClass = PositionService.class)
+    private PositionService positionService;
+    @Reference(interfaceClass = DepartmentService.class)
+    private DepartmentService departmentService;
 
     @ApiOperation(value = "获取所有员工(分页)")
     @GetMapping("/getPages")
     public CommonPage<EmployeeDto> getEmployee(@RequestParam(defaultValue = "1") Integer currentPage,
                                                @RequestParam(defaultValue = "10") Integer size,
-                                               EmployeeDto employee,
-                                               String[] beginDateScope){
+                                               EmployeeDto employee, Date[] beginDateScope
+                                               ){
         return employeeService.getEmployeeByPage(currentPage, size, employee, beginDateScope);
     }
 
@@ -61,11 +74,36 @@ public class DocumentEmployeeController {
         }else throw new BusinessException(CommonErrorCode.USER_NOT_EXISTS);//抛出异常
     }
 
+    @ApiOperation(value = "获取民族信息")
+    @GetMapping("/getNations")
+    public List<Nation> getNations(){
+        return nationService.list();
+    }
+    @ApiOperation(value = "获取政治面貌信息")
+    @GetMapping("/getPoliticsStatus")
+    public List<PoliticsStatus> getPoliticsStatus(){
+        return politicsStatusService.list();
+    }
+    @ApiOperation(value = "获取所有部门信息")
+    @GetMapping("/getDepartments")
+    public List<Department> getDepartments(){
+        return departmentService.getAllDepartments();
+    }
+    @ApiOperation(value = "获取职称信息")
+    @GetMapping("/getJoblevels")
+    public List<Joblevel> getJoblevels(){
+        return joblevelService.list();
+    }
+    @ApiOperation(value = "获取职位信息")
+    @GetMapping("/getPositions")
+    public List<Position> getPositions(){
+        return positionService.list();
+    }
+
     @ApiOperation("导出员工数据")
     @GetMapping(value = "/export",produces = "application/octet-stream")
     public void exportEmployee(HttpServletResponse response){
         List<EmployeeDto> list = employeeService.getEmployee();
-        System.out.println(list);
         ExportParams params = new ExportParams("员工表", "员工表", ExcelType.HSSF);
         Workbook workbook = ExcelExportUtil.exportExcel(params, EmployeeDto.class, list);
         ServletOutputStream out = null;
@@ -115,18 +153,19 @@ public class DocumentEmployeeController {
     }
 
     @ApiOperation("通过ID更新员工数据")
-    @PutMapping("/update/{id}")
-    public CommonResult<Integer> updateEmployeeById(@PathVariable(value = "id") Integer id ,@RequestBody EmployeeDto employeeDto){
-
+    @PutMapping("/update")
+    public CommonResult<Integer> updateEmployeeById(@RequestBody EmployeeDto employeeDto){
         Integer result=0;
-        if (id > 0) {
-        result = employeeService.updateEmployeeById(id,employeeDto);
+        result = employeeService.updateEmployeeById(employeeDto);
         if (result == 0) {
             throw new BusinessException(CommonErrorCode.USER_NOT_EXISTS);//抛出异常
         }
-        }else  throw new BusinessException(CommonErrorCode.VALIDATE_INPUT);
-
         return  CommonResult.success(result);
+    }
+
+    @GetMapping("/maxWorkID")
+    public CommonResult<String> maxWorkID(){
+        return CommonResult.success(String.format("%08d", employeeService.maxWorkID() + 1));
     }
 
 

@@ -3,7 +3,7 @@ package com.hr.document.service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hr.document.entity.Joblevel;
 import com.hr.document.mapper.JoblevelMapper;
-import org.springframework.stereotype.Service;
+import org.apache.dubbo.config.annotation.Service;
 
 /**
  * <p>

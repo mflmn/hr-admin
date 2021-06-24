@@ -2,9 +2,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.158.160:3306/hr_admin_system?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    url: jdbc:mysql://192.168.127.129:3306/hr_admin_system?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
     username: root
-    password: yueliminvc@outlook.com
+    password: 123456
 
 # MybatisPlus
 mybatis-plus:
@@ -24,7 +24,7 @@ dubbo:
   application:
     name: system-service
   registry:
-    address: zookeeper://192.168.158.160:2181
+    address: zookeeper://192.168.127.129:2181
     protocol: zookeeper
   protocol:
     name: dubbo

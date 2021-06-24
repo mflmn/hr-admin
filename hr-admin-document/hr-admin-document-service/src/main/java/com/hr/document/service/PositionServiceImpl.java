@@ -3,7 +3,7 @@ package com.hr.document.service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hr.document.entity.Position;
 import com.hr.document.mapper.PositionMapper;
-import org.springframework.stereotype.Service;
+import org.apache.dubbo.config.annotation.Service;
 
 /**
  * <p>

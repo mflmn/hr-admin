@@ -1,6 +1,5 @@
 package com.hr.document.service;
 
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -13,6 +12,7 @@ import com.hr.document.mapper.EmployeeMapper;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,7 +38,7 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, EmployeeDto
      * @return
      */
     @Override
-    public CommonPage<EmployeeDto> getEmployeeByPage(Integer currentPage, Integer size, EmployeeDto employee, String[] beginDateScope) {
+    public CommonPage<EmployeeDto> getEmployeeByPage(Integer currentPage, Integer size, EmployeeDto employee, Date[] beginDateScope) {
         //开启分页
         Page<EmployeeDto> page = new Page<>(currentPage,size);
         IPage<EmployeeDto> employeeByPage = employeeMapper.getEmployeeByPage(page, employee, beginDateScope);
@@ -108,11 +108,12 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, EmployeeDto
      * @return
      */
     @Override
-    public Integer updateEmployeeById(Integer id,EmployeeDto employeeDto){
+    public Integer updateEmployeeById(EmployeeDto employeeDto){
+        return employeeMapper.updateById(employeeDto);
+    }
 
-        UpdateWrapper<EmployeeDto> up= new UpdateWrapper<>();
-        up.eq("id",id);
-
-        return employeeMapper.update(employeeDto,up);
+    @Override
+    public Integer maxWorkID() {
+        return employeeMapper.maxWorkID();
     }
 }

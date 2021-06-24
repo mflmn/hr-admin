@@ -4,7 +4,7 @@ package com.hr.document.service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hr.document.entity.Salary;
 import com.hr.document.mapper.SalaryMapper;
-import org.springframework.stereotype.Service;
+import org.apache.dubbo.config.annotation.Service;
 
 /**
  * <p>

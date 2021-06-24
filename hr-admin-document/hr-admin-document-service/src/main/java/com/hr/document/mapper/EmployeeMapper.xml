@@ -78,6 +78,10 @@
         </association>
     </resultMap>
 
+    <select id="maxWorkID" resultType="java.lang.Integer">
+        select max(workID) from employee
+    </select>
+
     <!--获取所有员工（分页）-->
     <select id="getEmployeeByPage" resultMap="EmployeeInfo">
         select
